@@ -8,10 +8,11 @@ int main(void)
 {
 	char *s = "Size of a";
 
-	printf("%s char: %ld byte(s)\n", s, sizeof(char));
-	printf("%s int: %ld byte(s)\n", s, sizeof(int));
-	printf("%s long long int: %ld byte(s)\n", s, sizeof(long long int));
-	printf("%s float: %ld byte(s)\n", s, sizeof(float));
+	printf("%s char: %d byte(s)\n", s, sizeof(char));
+	printf("%s int: %d byte(s)\n", s, sizeof(int));
+	printf("%s long int: %d byte(s)\n", s, sizeof(long int));
+	printf("%s long long int: %d byte(s)\n", s, sizeof(long long int));
+	printf("%s float: %d byte(s)\n", s, sizeof(float));
 	return (0);
 }
 
