@@ -15,7 +15,7 @@ void print_number(int n)
 		_putchar('-');
 		num = -n;
 	}
-	else 
+	else
 		num = n;
 	if (num > 9)
 	{
