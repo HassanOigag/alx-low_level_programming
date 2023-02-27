@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- *rest_to_98 - reset a variable to 98
+ *reset_to_98 - reset a variable to 98
  *@n: the variable to reset
  *Return: nothing void
  */
