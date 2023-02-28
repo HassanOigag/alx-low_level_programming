@@ -13,8 +13,11 @@ void puts_half(char *str)
 
 	while (str[i])
 		i++;
-	middle = (i - 1) / 2;
 	if (i % 2 == 0)
+		middle = i / 2;
+	else
+		middle = (i - 1) / 2;
+	if (i % 2 != 0)
 		middle++;
 	while (str[middle])
 	{
