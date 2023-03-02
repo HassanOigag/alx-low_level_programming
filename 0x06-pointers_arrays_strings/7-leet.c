@@ -1,6 +1,27 @@
 #include "main.h"
 
 /**
+ *get_code - gets the code of the letter
+ *@c: the letter in hand
+ *Return: the encoding
+ */
+
+int	get_code(int c)
+{
+	char *letters = "aAeEoOtTlL";
+	char *codes = "4433007711";
+	int i = 0;
+
+	while (letters[i])
+	{
+		if (letters[i] == c)
+			return (codes[i]);
+		i++;
+	}
+	return (c);
+}
+
+/**
  *leet - encodes a string in 1337
  *@s: the string to encode
  *Return: returns the encoded string
@@ -12,16 +33,7 @@ char	*leet(char *s)
 
 	while (s[i])
 	{
-		if (s[i] == 'a' || s[i] == 'A')
-			s[i] = '4';
-		else if (s[i] == 'e' || s[i] == 'E')
-			s[i] = '3';
-		else if (s[i] == 'o' || s[i] == 'O')
-			s[i] = '0';
-		else if (s[i] == 't' || s[i] == 'T')
-			s[i] = '7';
-		else if (s[i] == 'l' || s[i] == 'L')
-			s[i] = '1';
+		s[i] = get_code(s[i]);
 		i++;
 	}
 	return (s);
