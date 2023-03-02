@@ -2,7 +2,7 @@
 
 /**
  *string_toupper - change lowercase to uppercase
- *@s: the string in hand 
+ *@s: the string in hand
  *Return: return the uppercase string
  */
 
