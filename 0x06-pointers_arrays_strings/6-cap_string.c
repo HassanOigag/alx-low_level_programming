@@ -35,6 +35,9 @@ char *cap_string(char *s)
 {
 	int i = 0;
 
+	if (s[i] && is_lower(s[i]))
+		s[i] -= 32;
+	i++;
 	while (s[i])
 	{
 		if (is_separator(s[i]) && s[i + 1] && is_lower(s[i + 1]))
