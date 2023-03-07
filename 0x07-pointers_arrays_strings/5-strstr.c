@@ -33,6 +33,8 @@ char *_strstr(char *haystack, char *needle)
 	unsigned int i = 0;
 	unsigned int n = 0;
 
+	if (!needle || !needle[0])
+		return (haystack);
 	while (needle[n])
 		n++;
 	while (haystack[i])
