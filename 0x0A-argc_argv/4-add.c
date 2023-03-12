@@ -10,6 +10,7 @@
 int is_valid_int(char *s)
 {
 	int i = 0;
+
 	while (s[i])
 	{
 		if (!(s[i] >= '0' && s[i] <= '9'))
@@ -27,7 +28,7 @@ int is_valid_int(char *s)
  */
 
 int main(int argc, char **argv)
-{	
+{
 	int sum = 0;
 	int i = 1;
 
