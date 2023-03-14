@@ -52,10 +52,10 @@ char *str_concat(char *s1, char *s2)
 }
 
 /**
- *main - entry point
+ *argstostr - concatenates args into one string
  *@ac: the number of arguments
  *@av: the array of arguments
- @Return: void returns nothing
+ *Return: returns the string with all args
  */
 
 char *argstostr(int ac, char **av)
