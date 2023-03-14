@@ -16,42 +16,6 @@ unsigned int _strlen(char *s)
 }
 
 /**
- *str_concat - concatenate two strings
- *@s1: the first string
- *@s2: the second string
- *Return: returns the new string or NULL if failed
- */
-
-char *str_concat(char *s1, char *s2)
-{
-	int size;
-	char *str;
-	int i = 0;
-	int j = 0;
-
-	if (!s1)
-		return (NULL);
-	if (!s2)
-		s2 = "";
-	size = _strlen(s1) + _strlen(s2) + 1;
-	str = malloc(sizeof(char) * size);
-	if (!str)
-		return (NULL);
-	while (s1[i])
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	while (s2[j])
-	{
-		str[i + j] = s2[j];
-		j++;
-	}
-	str[i + j] = s2[j];
-	return (str);
-}
-
-/**
  *argstostr - concatenates args into one string
  *@ac: the number of arguments
  *@av: the array of arguments
@@ -60,22 +24,41 @@ char *str_concat(char *s1, char *s2)
 
 char *argstostr(int ac, char **av)
 {
-	char *str = "";
-	char *word;
+	char *str;
+	unsigned int	 size = ac + 1;
+	int	i = 0;
+	int j = 0;
+	int k = 0;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	while (*av)
+	while (i < ac)
 	{
-		word = str_concat(*av, "\n");
-		str = str_concat(str, word);
-		free(word);
-		av++;
+		size += _strlen(av[i]);
+		i++;
 	}
+	i = 0;
+	str = malloc(sizeof(char) * size);
+	if (!str)
+		return (NULL);
+	while (av[k])
+	{
+		j = 0;
+		while (av[k][j])
+		{
+			if (k == 0)
+				str[j] = av[k][j];
+			else
+				str[i + j] = av[k][j];
+			j++;
+		}
+		if (k == 0)
+			str[j] = '\n';
+		else
+			str[i + j] = '\n';
+		i = i + j + 1;
+		k++;
+	}
+	str[i] = '\0';
 	return (str);
 }
-
-
-
-
-
