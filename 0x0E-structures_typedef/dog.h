@@ -9,7 +9,6 @@
  *
  *Longer description
  */
-#include <stdio.h>
 struct dog
 {
 	char *name;
