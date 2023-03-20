@@ -2,13 +2,12 @@
 
 /**
  *main - entry point
- *@argc: number of arguments
- *@argv: an array of strings
  *Return: 0 on success
  */
 
-int main(int __attribute((unused)) argc, char **argv)
+int main(void)
 {
-	printf("%s\n", __FILE__);
+	char *file_name = __FILE__;
+	printf("%s\n", file_name);
 	return (0);
 }
