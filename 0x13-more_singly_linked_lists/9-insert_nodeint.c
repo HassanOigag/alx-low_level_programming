@@ -12,7 +12,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	int prev_idx = idx - 1;
 	listint_t *tmp;
-	int i = 0;
+	unsigned int i = 0;
 	int found = 0;
 	listint_t *node;
 
@@ -39,7 +39,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		i++;
 		tmp = tmp->next;
 	}
-	if (tmp || !found)
+	if (!found)
 		return (NULL);
 	node->next = tmp->next;
 	tmp->next = node;
