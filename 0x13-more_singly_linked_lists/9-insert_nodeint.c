@@ -11,14 +11,14 @@
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	int prev_idx = idx - 1;
-	listint_t *tmp = *head;
+	listint_t *tmp;
 	int i = 0;
 	int found = 0;
 	listint_t *node;
 
-	if (!tmp)
+	if (!head || !*head)
 		return (NULL);
-
+	tmp = *head;
 	while (tmp)
 	{
 		if  (i == prev_idx)
