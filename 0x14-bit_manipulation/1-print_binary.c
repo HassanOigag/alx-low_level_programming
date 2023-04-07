@@ -8,9 +8,9 @@
 
 void print_binary(unsigned long int n)
 {
-	int i = 62;
+	int i = 32;
 	int start_print = 0;
-	int bit;
+	unsigned int bit;
 
 	if (n == 0 || n == 1)
 	{
