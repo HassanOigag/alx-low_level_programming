@@ -26,7 +26,10 @@ int append_text_to_file(const char *filename, char *text_content)
 			slen++;
 		w = write(fd, text_content, slen);
 		if (w < 0 || slen != w)
+		{
+			close(fd);
 			return (-1);
+		}
 	}
 	close(fd);
 	return (1);
