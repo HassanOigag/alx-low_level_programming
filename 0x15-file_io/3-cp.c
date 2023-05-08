@@ -43,7 +43,6 @@ int main(int argc, char **argv)
 		read_bytes = read(fd_from, buffer, BUFFER_SIZE);
 		if (read_bytes < 0)
 			error_log(file_from, NULL, 0, 98);
-		buffer[read_bytes] = '\0';
 		printf("buffer: %s\n", buffer);
 		written_bytes = write(fd_to, buffer, read_bytes);
 		if (written_bytes < 0 || read_bytes != written_bytes)
