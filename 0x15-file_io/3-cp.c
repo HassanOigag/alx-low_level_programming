@@ -26,17 +26,17 @@ int main(int argc, char **argv)
 	int fd_from, fd_to;
 	int	read_bytes = 1;
 	int written_bytes = 1;
-	char buffer[BUFFER_SIZE + 1];
+	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
 		error_log("file_from", "file_to", 0, 97);
 	file_from = argv[1];
 	file_to = argv[2];
 	fd_from = open(file_from, O_RDONLY);
-	if (fd_from == -1)
+	if (fd_from < 0)
 		error_log(file_from, NULL, 0, 98);
 	fd_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	if (fd_to == -1)
+	if (fd_to < 0)
 		error_log(NULL, file_to, 0, 99);
 	while (read_bytes > 0)
 	{		
