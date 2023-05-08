@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ *@file_from: name of the input file
+ *@file_to: name of the output file
+ *@fd: file descriptor
+ *@exit_code: the exit code
+ *Return: nothing
+*/
 void error_log(char *file_from, char *file_to, int fd, int exit_code)
 {
 	if (exit_code == 97)
@@ -20,12 +27,11 @@ void error_log(char *file_from, char *file_to, int fd, int exit_code)
  *Return: 0 on success else non zero value on error
  */
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	char *file_from, *file_to;
+	int bytes_read;
 	int fd_from, fd_to;
-	int	read_bytes = 1;
-	int written_bytes = 1;
+	char *file_from, *file_to;
 	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
@@ -35,25 +41,21 @@ int main(int argc, char **argv)
 	fd_from = open(file_from, O_RDONLY);
 	if (fd_from < 0)
 		error_log(file_from, NULL, 0, 98);
-	fd_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	if (fd_to < 0)
-		error_log(NULL, file_to, 0, 99);
-	while (read_bytes > 0)
-	{		
-		read_bytes = read(fd_from, buffer, BUFFER_SIZE);
-		if (read_bytes < 0)
-			error_log(file_from, NULL, 0, 98);
-		printf("buffer: %s\n", buffer);
-		written_bytes = write(fd_to, buffer, read_bytes);
-		if (written_bytes < 0 || read_bytes != written_bytes)
+	fd_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	while ((bytes_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
+	{
+		if (fd_to < 0 || write(fd_to, buffer, bytes_read) != bytes_read)
 		{
-			error_log(NULL, file_to, 0, 99);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			close(fd_from);
+			exit(99);
 		}
 	}
-	if (close(fd_to) < 0)
-		error_log(NULL, NULL, fd_to, 100);
+	if (bytes_read < 0)
+		error_log(file_from, NULL, 0, 98);
 	if (close(fd_from) < 0)
 		error_log(NULL, NULL, fd_from, 100);
+	if (close(fd_to) < 0)
+		error_log(NULL, NULL, fd_to, 100);
 	return (0);
 }
