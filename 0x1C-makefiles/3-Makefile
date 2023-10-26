@@ -2,7 +2,7 @@ CC = gcc
 NAME = school
 SRC = school.c main.c
 OBJ = $(SRC:.c=.o)
-RM = rm
+RM = rm -f
 
 all: $(NAME)
 
@@ -10,7 +10,7 @@ $(NAME): $(OBJ) m.h
 	$(CC) $(OBJ) -o $@
 
 clean:
-	$(RM) *.swp *~ $(NAME)
+	$(RM) $(wildcard *.swp) $(wildcard *~) $(NAME)
 
 oclean:
 	$(RM) $(OBJ)
