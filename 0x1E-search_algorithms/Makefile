@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = linear
 
-SRCS = 0-linear.c main.c
+SRCS = 0-linear.c main.c 1-binary.c
 
 HEADERS = search_algos.h
 
